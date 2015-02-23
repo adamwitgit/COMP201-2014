@@ -75,12 +75,14 @@ private:
     Node<T> * head;
     Node<T> * tail;
 };
-
 int main() {
     List<int> numbers;
     numbers.push_back(42);
+    // 42
     numbers.push_front(10);
+    // 10, 42
     numbers.push_front(3);
+    // 3, 10, 42
     numbers.push_back(87);
     // 3, 10, 42, 87
     std::cout << (3 == numbers.peek_front()) << std::endl;
@@ -93,7 +95,9 @@ int main() {
     std::cout << (42 == numbers.peek_back()) << std::endl;
     std::cout << !numbers.empty() << std::endl;
     numbers.pop_front();
+    // 10
     numbers.pop_front();
+    // Empty
     std::cout << numbers.empty() << std::endl;
 /*    Node<std::string> * node2 = new Node<std::string>("world");
     Node<std::string> * node1 = new Node<std::string>("hello", node2);
