@@ -68,27 +68,38 @@ bool Model::matched(int row, int column) {
 }
 // TODO: Flip a cell
 void Model::flip(int row, int column) {
-    // If the row and column are not valid, break out and don't do anything
-    if (!valid(row, column)) { return; }
-    visible[row][column] = grid[row][column];
-    
-    switch(state) {
-    case INIT:
-        // clear out lastRow and lastColumn
-        lastRow.clear();
-        state = FIRST;
-        break;
-    case FIRST:
-        // Check to see if the grid at last row and column match what's in the grid the current column
-        // set the state accordingly
-        break;
-    case NO_MATCH:
-        // clear out the visible state in the last two rows/columns
-        // go to the first state
-        break;
-    }
-    lastRow.push_back(row);
-    lastColumn.push_back(column);
+	// If the row and column are not valid, break out and don't do anything
+	if (!valid(row, column)) { return; }
+	visible[row][column] = grid[row][column];
+
+	switch (state) {
+	case INIT:
+		lastRow.clear();
+		lastColumn.clear();
+		state = FIRST;
+		break;
+	case FIRST:
+		if (grid[row][column] == grid[lastRow[0]][lastColumn[0]])
+		{
+			state = INIT;
+		}
+		else
+		{
+			state = NO_MATCH;
+		}
+		break;
+	case NO_MATCH:
+		for (int i = 0; i < lastRow.size(); i++)
+		{
+			visible[lastRow[i]][lastColumn[i]] = '_';
+		}
+		lastRow.clear();
+		lastColumn.clear();
+		state = FIRST;
+		break;
+	}
+	lastRow.push_back(row);
+	lastColumn.push_back(column);
 }
 // If everything is visible, then it's game over
 bool Model::gameOver() {

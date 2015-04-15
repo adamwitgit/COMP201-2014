@@ -118,8 +118,8 @@ bool Model::matched(int row, int column) {
 }
 // TODO: Flip a cell
 void Model::flip(int row, int column) {
-    // If the row and column are not valid, break out and don't do anything
-    if (!valid(row, column)) { return; }
+	// If the row and column are not valid, break out and don't do anything
+	if (!valid(row, column)) { return; }
     
     // If the last selected row and column are invalid,
         // It means we're selecting the first "cell" to flip
