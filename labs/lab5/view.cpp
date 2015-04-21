@@ -106,9 +106,9 @@ void View::show(Model * model) {
             0x80, 0x00, 0x00));
     
     // Draw the snake
-    for (std::list<Coordinate>::iterator it=model->snake.begin(); it!=model->snake.end(); it++) {
-        dest.x = it->x * 16;
-        dest.y = it->y * 16;
+    for (Node<Coordinate> * it=model->snake.begin(); it!=model->snake.end(); it = it->next) {
+        dest.x = it->data.x * 16;
+        dest.y = it->data.y * 16;
         SDL_FillRect(screen, &dest, SDL_MapRGB(screen->format,
         0x00, 0x80, 0x00));
     }

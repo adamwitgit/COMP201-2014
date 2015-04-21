@@ -60,17 +60,17 @@ void List<T>::pop_front() {
 
 template <typename T>
 void List<T>::push_back(T element) {
-
+	Node<T> * node = new Node<T> (element, NULL, tail);
 }
 
 template <typename T>
 T List<T>::peek_back() {
-
+	return tail->data;
 }
 
 template <typename T>
 void List<T>::pop_back() {
-
+	Node<T> * node = tail->prev;
 }
 
 template <typename T>

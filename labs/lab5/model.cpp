@@ -45,7 +45,7 @@ void Model::end() {
 
 // Move foward
 void Model::crawl() {
-    Coordinate front = snake.front();
+    Coordinate front = snake.peek_front();
     switch(direction) {
     case UP: front.y--; break;
     case DOWN: front.y++; break;
